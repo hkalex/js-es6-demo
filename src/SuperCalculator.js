@@ -4,6 +4,7 @@ export default class SuperCalculator extends Calculator {
   constructor(myBase) {
     super(myBase);
   }
+  
   sum() {
     var result = this.myBase;
     for(var i=0; i<arguments.length; i++) {
@@ -11,9 +12,11 @@ export default class SuperCalculator extends Calculator {
     }
     return result;
   }
+
   pow(x,y) {
     return Math.pow(x,y);
   }
+
   sumAsync() {
     var args = arguments;
     var myBase = this.myBase;
@@ -23,7 +26,9 @@ export default class SuperCalculator extends Calculator {
         for(var i=0; i<arguments.length; i++) {
           result += arguments[i];
         }
-        return resolve(result);
+        setTimeout(() => {
+          resolve(result);
+        }, 500);
       } catch (err) {
         reject(err);
       }
